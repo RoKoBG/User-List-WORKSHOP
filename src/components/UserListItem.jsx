@@ -1,12 +1,21 @@
 import { formatDate } from "../utils/dataUtils";
 const UserListItem = ({
+    userId,
     firstName,
     lastName,
     email,
     phoneNumber,
     createdAt,
-    imageUrl
+    imageUrl,
+    onInfoClick,
+    onDeleteClick,
 }) => {
+    const infoClickHandler = () => {
+        onInfoClick(userId);
+    };
+    const deleteClickHandler = () => {
+        onDeleteClick(userId);
+    };
 
     return (
         <tr>
@@ -41,7 +50,11 @@ const UserListItem = ({
                         ></path>
                     </svg>
                 </button>
-                <button className="btn delete-btn" title="Delete">
+                <button
+                    className="btn delete-btn"
+                    title="Delete"
+                    onClick={deleteClickHandler}
+                >
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -58,7 +71,11 @@ const UserListItem = ({
                         ></path>
                     </svg>
                 </button>
-                <button className="btn info-btn" title="Info">
+                <button
+                    className="btn info-btn"
+                    title="Info"
+                    onClick={infoClickHandler}
+                >
                     <svg
                         aria-hidden="true"
                         focusable="false"
